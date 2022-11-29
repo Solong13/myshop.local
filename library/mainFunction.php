@@ -44,3 +44,22 @@ function d($value = null, $die = 1){
 
     if($die) die;
 }
+
+/**
+ * Перетворення результата роботи функції
+ * виборки в асоціативний масив
+ *
+ * @param recordset $rs нібір строк - результат роботи SELECT
+ * @return array|false
+ */
+function creatSmartyRsArray($rs){
+    // перевіряємо чи є такий масив
+    if (! $rs) return false;
+
+    $smartyRs = array();
+    while($row = mysql_fetch_assoc($rs)){
+        $smartyRs[] = $row;
+    }
+d($smartyRs);
+    return  $smartyRs;
+}

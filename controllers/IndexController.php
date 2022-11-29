@@ -24,7 +24,8 @@ function indexAction($smarty){
     // ініцілізація премінної pageTitle зі значенням Головна сторінка сайта,
     // яку передамо в шаблон і в потрібних місцях викликаємо
     $smarty->assign('pageTitle', 'Головна сторінка сайта');
-
+    // виводити можемо на екрна в шаблонізаторі наші дані з бд
+    $smarty->assign('rsCategories', $rsCategories);
     // 1 параметр це об'єкт смарті, 2 який шаблон потрібно викликати і опрацювати 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'index');
