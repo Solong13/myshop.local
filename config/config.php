@@ -9,14 +9,14 @@ define('PathPostfix', 'Controller.php');
 
 // В нас буде два шаблона 1 стандартний default і Smarty
 
-//> Викорстовуємо шаблон
+//> Викорстовуємо шаблон/ назва папки
 $template = 'default';
 
 // шлях до файла шаблонів (*.tpl)
 define ("TemplatePrefix", "../views/$template/");
 define ("TemplatePostfix", ".tpl");
 
-//шлях до файлів в вебпросторі тобто в папці www
+//шлях до файлів в вебпросторі тобто в папці www  Шлях до нашого main.css
 define ("TemplateWebPath", "/templates/$template/");
 //<
 
@@ -38,6 +38,7 @@ $smarty->setCacheDir("../tmp/smarty/cache");
 // системні налаштування 
 $smarty->setConfigDir("../library/Smarty/configs");
 
-//  пераша  змінна своя не смарті., для своїх ручних змін
+// Прописуємо змінну яка зберігає шлях до наших шаблонів
 $smarty->assign("templateWebPath", TemplateWebPath);
+
 //<

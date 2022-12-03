@@ -12,7 +12,9 @@ function loadPage($smarty, $controllerName, $actionName = 'index'){
     include_once PathPrefix . $controllerName . PathPostfix;
     // Орієнтована функція підключення  повна назва
 
-    $function = $actionName.'Action';
+    $function = $actionName.'Action';// indexAction
+    // Викликається функція те саме що indexAction($smarty)
+    // аргумент $smarty передаємо в функцію indexAction
     $function($smarty);
 }
 
@@ -23,10 +25,11 @@ function loadPage($smarty, $controllerName, $actionName = 'index'){
  * @param string $templateName назва файла шаблона
  */
 function loadTemplate($smarty, $templateName){
-    // це типу шлях назва та розширення 
+    // це типу шлях назва та розширення типу /views/default/index.tpl
     TemplatePrefix.$templateName .= TemplatePostfix;
     // викликаємо метод об'єкта і передаємо саме назву шаблона з розширенням .tpl
     $smarty->display($templateName);
+
 }
 
 /**
@@ -60,6 +63,6 @@ function creatSmartyRsArray($rs){
     while($row = mysql_fetch_assoc($rs)){
         $smartyRs[] = $row;
     }
-d($smartyRs);
+
     return  $smartyRs;
 }

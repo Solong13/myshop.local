@@ -19,8 +19,6 @@ function getChildrenForCat($catId){
     return creatSmartyRsArray($rs);
 }
 
-
-
 /**
  * Отримати головгні категорії з прив'язками дочірніх
  *
@@ -29,7 +27,7 @@ function getChildrenForCat($catId){
 function getAllMainCatsWithChildren(){
     // вибрка головних категорій
     $sql = 'SELECT * FROM categories WHERE parent_id = 0';
-    // підготовка запита
+    // підготовка запита і звернення до MYSQL
     $rs = mysql_query($sql);
 
     // куди будемо складати масив даних з бд
@@ -49,5 +47,6 @@ function getAllMainCatsWithChildren(){
     }
 
     return $smartyRs;
+
 }
 
