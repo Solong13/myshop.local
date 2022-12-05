@@ -1,4 +1,6 @@
 <?php
+// потрібно буде зробити захист для всіх функцій які отримують дані через url
+
 /**
  * Модель для таблиці категорій
  */
@@ -48,5 +50,23 @@ function getAllMainCatsWithChildren(){
 
     return $smartyRs;
 
+}
+
+/**
+ * Отримати дані категорій по id
+ *
+ * @param integer $catId ID категорії
+ * @return array масив - рядок категорій
+ */
+function getCatById($catId){
+    // любий тип який приходить дана функція повертая з типом integer
+    // захист від sql - ін'єкцій
+    // '($catId)' потрібно для якщо значення буде null то ми не отримаємо ніяких даних. Захист від sql - ін'єкцій
+    $catId = intval($catId);
+    $sql = "SELECT * FROM categories WHERE  id = '$catId'";
+
+    $rs = mysql_query($sql);
+
+    return mysql_fetch_assoc($rs);
 }
 
