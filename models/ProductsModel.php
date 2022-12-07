@@ -23,3 +23,19 @@ function getLastProducts($limit = null){
 
     return creatSmartyRsArray($rs);
 }
+
+/**
+ * Отримати продукти для категорії $itemId
+ *
+ * @param integer $itemId айді категорії
+ * @return array|false масив продуктів
+ */
+function getProductsByCat($itemId){
+    $itemId = intval($itemId);
+    $sql = "SELECT * FROM products WHERE  
+    category_id = '$itemId'";
+
+    $rs = mysql_query($sql);
+
+    return creatSmartyRsArray($rs);
+}

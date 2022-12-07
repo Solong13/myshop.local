@@ -2,6 +2,7 @@
 include_once '../config/config.php'; // Ініціалізація налаштувань
 include_once '../config/db.php'; // Ініціалізація бази даних
 include_once '../library/mainFunction.php'; // Основні функції
+/*Одна унікальна сторінка з одним унікальним контентом*/
 
 /*
 В нашому проекті використовується модель MVC 

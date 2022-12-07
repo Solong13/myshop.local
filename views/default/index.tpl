@@ -4,7 +4,7 @@
 {foreach $rsProducts as $item name = products}
     <div style="float: left; padding: 0px 30px 40px 0px;">
         {* url даного товару *}
-        <a href="/product/{$item['id']}/">
+        <a href="/products/{$item['id']}/">
             {* вивід шлях картинки *}
             <img src="/images/products/{$item['image']}" width="100" />
         </a><br />

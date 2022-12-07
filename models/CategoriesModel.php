@@ -66,7 +66,7 @@ function getCatById($catId){
     $sql = "SELECT * FROM categories WHERE  id = '$catId'";
 
     $rs = mysql_query($sql);
-
+    // варіант запису  return mysql_fetch_assoc($rs)
     return mysql_fetch_assoc($rs);
 }
 
