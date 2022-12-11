@@ -27,15 +27,30 @@ function getLastProducts($limit = null){
 /**
  * Отримати продукти для категорії $itemId
  *
- * @param integer $itemId айді категорії
+ * @param integer $catId айді категорії
  * @return array|false масив продуктів
  */
-function getProductsByCat($itemId){
-    $itemId = intval($itemId);
+function getProductsByCat($catId){
+    $catId = intval($catId);
     $sql = "SELECT * FROM products WHERE  
-    category_id = '$itemId'";
+    category_id = '$catId'";
 
     $rs = mysql_query($sql);
 
     return creatSmartyRsArray($rs);
+}
+
+/**
+ * Отримати дані продукта по id
+ *
+ * @param integer $itemId id продукта
+ * @return array масив даних продукта
+ */
+function getProductById($itemId){
+    $itemId = intval($itemId);
+
+    $sql = "SELECT * FROM products WHERE id ='$itemId'";
+
+    $rs = mysql_query($sql);
+    return mysql_fetch_assoc($rs);
 }

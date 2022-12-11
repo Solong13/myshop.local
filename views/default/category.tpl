@@ -16,7 +16,7 @@
                     <div style="clear: both;"></div>
                 {/if}
             {foreachelse}
-            Ничего не найдено
+                Нічого не знайдено
         {/foreach}
   {/if}
 

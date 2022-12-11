@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-12-06 22:30:24
+<?php /* Smarty version Smarty-3.1.6, created on 2022-12-11 14:26:19
          compiled from "../views/default\category.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:31704638f7fb2b78767-97465679%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '76efe512959f670dcfbe2dc8447081a8ad91a48b' => 
     array (
       0 => '../views/default\\category.tpl',
-      1 => 1670362223,
+      1 => 1670765179,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
             <?php }
 if (!$_smarty_tpl->tpl_vars['item']->_loop) {
 ?>
-            Ничего не найдено
+                Нічого не знайдено
         <?php } ?>
   <?php }?>
 
