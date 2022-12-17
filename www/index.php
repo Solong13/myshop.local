@@ -3,7 +3,7 @@
 session_start();
 
 // якщо в сесії немає масива корзини то створюємо її
-if(!isset($_SESSION['crt'])){
+if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
 
@@ -43,6 +43,9 @@ include_once '../library/mainFunction.php'; // Основні функції
 $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'Index';
 // Вирішуємо з якою функцією будемо працювати
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
+
+// ініціалізація змінної шаблнізатора кількості елементів в корзині
+$smarty->assign('cartCntItems', count($_SESSION['cart']));
 
 // Створюємо сторінку $smarty об'єк шаблонізатора
 loadPage($smarty, $controllerName, $actionName);

@@ -1,18 +1,23 @@
 AddDefaultCharset utf-8
-#Включает отслеживание сим-ссылок
-Options +FollowSymLinks
-Options -Indexes
-DirectoryIndex index.php
-#Запускает url_rewriting
-RewriteEngine On
-RewriteBase /
+    #Включает отслеживание сим-ссылок
+    Options +FollowSymLinks
+    Options -Indexes
+    DirectoryIndex index.php
+    #Запускает url_rewriting
+    RewriteEngine On
+    RewriteBase /
+
+# якщо приходить 3 параметри контролер, екшен і айді
+RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/$ /?controller=$1&action=$2&id=$3&%{QUERY_STRING} [NS,L]
+# якщо приходить 2параметри контролер, екшен
+RewriteRule ^([a-z]+)/([a-z]+)/$ /?controller=$1&action=$2&%{QUERY_STRING} [NS,L]
 # 1 блок, латинські букви, цифри 2 блок в який url потрібно відображати 3 блок для додавання декількох умов
 RewriteRule ^([a-z]+)/([0-9]+)/$ /?controller=$1&id=$2&%{QUERY_STRING} [NS,L]
 
-#Защита сайта от атак
-RewriteCond $1 !^(index\.php)
-RewriteCond %{REQUEST_URI} !\.(css|js|jpg|gif)$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+    #Защита сайта от атак
+    RewriteCond $1 !^(index\.php)
+    RewriteCond %{REQUEST_URI} !\.(css|js|jpg|gif)$
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+    RewriteRule ^(.*)$ index.php/$1 [L,QSA]

@@ -24,6 +24,13 @@ function indexAction($smarty){
     // отримати дані категорії для формування головної сторінки сайта
     $rsCategories = getAllMainCatsWithChildren();
 
+    // для функціоналу в шаблоні продукт.тпл, а саме показуваьт контен і проховання
+    // 0, 1 називається прапорцем, флаг
+    $smarty->assign('itemInCart', 0);
+    if(in_array($itemId, $_SESSION['cart'])){
+        $smarty->assign('itemInCart', 1);
+    }
+
     // Ініціалізація перемінних $smarty
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);

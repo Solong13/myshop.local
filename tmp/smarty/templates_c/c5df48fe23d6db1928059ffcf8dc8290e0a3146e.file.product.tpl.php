@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-12-11 21:50:08
+<?php /* Smarty version Smarty-3.1.6, created on 2022-12-16 21:55:07
          compiled from "../views/default\product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23249639612dc8fc854-97828529%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5df48fe23d6db1928059ffcf8dc8290e0a3146e' => 
     array (
       0 => '../views/default\\product.tpl',
-      1 => 1670791581,
+      1 => 1671224100,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'rsProduct' => 0,
+    'itemInCart' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -33,8 +34,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 Вартість: <?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['price'];?>
 
 
+<a id="removeCart_<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id'];?>
+" <?php if (!$_smarty_tpl->tpl_vars['itemInCart']->value){?>class="hideme"<?php }?> href="#" onclick="removeFromCart(<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id'];?>
+); return false;" alt="Видалення з корзини">Видалення з корзини</a>
 <a id="addCart_<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id'];?>
-" href="#" onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id'];?>
+"   <?php if ($_smarty_tpl->tpl_vars['itemInCart']->value){?>class="hideme"<?php }?> href="#" onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id'];?>
 ); return false;" alt="Додати в корзину">Додати в корзину</a>
 <p>Опис <br /><?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['description'];?>
 </p><?php }} ?>
