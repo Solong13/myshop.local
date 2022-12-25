@@ -13,6 +13,8 @@ RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/$ /?controller=$1&action=$2&id=$3&%{QUER
 RewriteRule ^([a-z]+)/([a-z]+)/$ /?controller=$1&action=$2&%{QUERY_STRING} [NS,L]
 # 1 блок, латинські букви, цифри 2 блок в який url потрібно відображати 3 блок для додавання декількох умов
 RewriteRule ^([a-z]+)/([0-9]+)/$ /?controller=$1&id=$2&%{QUERY_STRING} [NS,L]
+# Вказуємо лише один параметри для імені контролера, 2 не вказуємо томц що в нас по дефолту в index.php прописана функція контролера індекс
+RewriteRule ^([a-z]+)/$ /?controller=$1&%{QUERY_STRING} [NS,L]
 
     #Защита сайта от атак
     RewriteCond $1 !^(index\.php)

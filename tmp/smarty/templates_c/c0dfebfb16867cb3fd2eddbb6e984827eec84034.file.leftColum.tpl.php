@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2022-12-15 19:06:19
+<?php /* Smarty version Smarty-3.1.6, created on 2022-12-25 16:57:08
          compiled from "../views/default\leftColum.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4762637bab9cb81057-24861237%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0dfebfb16867cb3fd2eddbb6e984827eec84034' => 
     array (
       0 => '../views/default\\leftColum.tpl',
-      1 => 1671115553,
+      1 => 1671983168,
       2 => 'file',
     ),
   ),
@@ -54,6 +54,21 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 
             <?php } ?>
     </div>
+
+
+    <div id="registerBox">
+        <div class="manuCaption showHidden" onclick="showRegisterBox();">Реєстрація</div>
+        <div id="registerBoxHidden">
+            email:<br />
+            <input type="text" id="email" name="email" value=""/><br />
+            пароль:<br />
+            <input type="password" id="pwd1" name="pwd1" value=""/><br />
+            повторити пароль:<br />
+            <input type="password" id="pwd2" name="pwd2" value=""/><br />
+            <input type="button" onclick="registerNewUser();" value="Зареєструватися"/>
+        </div>
+    </div>
+
 
     <div class="menuCaption">Корзина</div>
     <a href="/cart/" title="Перейти в корзину">В корзину</a>

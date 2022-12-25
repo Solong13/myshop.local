@@ -7,11 +7,6 @@
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
 
-
-//function testAction(){
-//    echo 'IndexController.php > testAction';
-//}
-
 /**
  * Формування головної сторінки сайта
  * 

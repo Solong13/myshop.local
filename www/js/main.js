@@ -54,72 +54,79 @@ function addToCart(itemId){
  	});
  }
 
-// /**
-//  * Подсчет стоимости купленного товара
-//  *
-//  * @param integer itemId ID продукта
-//  *
-//  */
-// function conversionPrice(itemId){
-//     var newCnt = $('#itemCnt_' + itemId).val();
-//     var itemPrice = $('#itemPrice_' + itemId).attr('value');
-//     var itemRealPrice = newCnt * itemPrice;
-//
-//     $('#itemRealPrice_' + itemId).html(itemRealPrice);
-// }
-//
-// /**
-//  * Получение данных с формы
-//  *
-//  */
-// function getData(obj_form){
-//           var hData = {};
-//           $('input, textarea, select',  obj_form).each(function(){
-//                if(this.name && this.name!=''){
-//                     hData[this.name] = this.value;
-// 					console.log('hData[' + this.name + '] = ' + hData[this.name]);
-//                }
-//           });
-//           return hData;
-// };
-//
-// /**
-//  * Регистрация нового пользователя
-//  *
-//  */
-// function registerNewUser(){
-//     var postData = getData('#registerBox');
-//
-//      $.ajax({
-// 		type: 'POST',
-// 		async: false,
-// 		url: "/user/register/",
-//         data: postData,
-// 		dataType: 'json',
-// 		success: function(data){
-// 			if(data['success']){
-//                 alert('Регистрация прошла успешно');
-//
-//                 //> блок в левом столбце
-//                 $('#registerBox').hide();
-//
-// 				$('#userLink').attr('href', '/user/');
-//                 $('#userLink').html(data['userName']);
-//                 $('#userBox').show();
-//                 //<
-//
-// 				//> страница заказа
-//                 $('#loginBox').hide();
-//                 $('#btnSaveOrder').show();
-//                 //<
-// 			} else {
-//                 alert(data['message']);
-//             }
-//
-// 		}
-// 	});
-// }
-//
+ /**
+  * Подсчет стоимости купленного товара
+  *
+  * @param integer itemId ID продукта
+  *
+  */
+ function conversionPrice(itemId){
+ 	// звертаємося до елемента #itemCnt_ і беремо значення поля value
+     var newCnt = $('#itemCnt_' + itemId).val();
+	 // звертаємося до елемента #itemPrice_ і його атрибут value
+     var itemPrice = $('#itemPrice_' + itemId).attr('value');
+	 // підрахунок
+     var itemRealPrice = newCnt * itemPrice;
+	 // вивід заміна кода в полі
+     $('#itemRealPrice_' + itemId).html(itemRealPrice);
+ }
+
+/**
+ * Получение данных с формы
+ *
+ */
+function getData(obj_form){
+        // ініціалізація об'єкта, тому що нам потрібні дані в форматі ключ = значення
+          var hData = {};
+
+          // для всіх полів цього об'єкта застосовуємо метод .each
+          $('input, textarea, select',  obj_form).each(function(){
+              // беремо значення об'єкта  наприклад input та його значення
+               if(this.name && this.name!=''){
+                    hData[this.name] = this.value;
+					console.log('hData[' + this.name + '] = ' + hData[this.name]);
+               }
+          });
+          return hData;
+};
+
+ /**
+  * Регистрация нового пользователя
+  *
+  */
+ function registerNewUser(){
+     var postData = getData('#registerBox');
+
+      $.ajax({
+ 		type: 'POST',
+ 		async: false,
+ 		url: "/user/register/",
+         data: postData,
+ 		dataType: 'json',
+ 		success: function(data){
+ 			if(data['success']){
+                 alert('Реєстрація пройшла успішно');
+
+                 //> блок в левом столбце
+                 $('#registerBox').hide();
+
+ 				// $('#userLink').attr('href', '/user/');
+                 // $('#userLink').html(data['userName']);
+                 // $('#userBox').show();
+                 //<
+
+ 				//> страница заказа
+                 // $('#loginBox').hide();
+                 // $('#btnSaveOrder').show();
+                 //<
+ 			} else {
+                 alert(data['message']);
+             }
+
+ 		}
+ 	});
+ }
+
 //
 // /**
 //  * Авторизация пользователя

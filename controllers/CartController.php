@@ -59,3 +59,24 @@ function removefromcartAction(){
     echo json_encode($resData);
 }
 
+/**
+ * Формування сторінки корзини
+ *
+ * @link /cart/
+ */
+function indexAction($smarty){
+    // які лежать в сесії
+    $itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+    // головні і дочірні категорії для бокового меню
+    $rsCategories = getAllMainCatsWithChildren();
+    // отримати продуккти з корзини по id
+    $rsProducts = getProductsFromArray($itemsIds);
+
+    $smarty->assign('pageTitle', 'Корзина');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'cart');
+    loadTemplate($smarty, 'footer');
+}

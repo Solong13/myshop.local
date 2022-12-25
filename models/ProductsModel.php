@@ -54,3 +54,22 @@ function getProductById($itemId){
     $rs = mysql_query($sql);
     return mysql_fetch_assoc($rs);
 }
+
+/**
+ * Отримуємо список продуктів з масива ідентифікатора (ID`s)
+ *
+ * @param array $itemsIds масив ідентифікаторів продуктів
+ * @return array|false масив даних продуктів
+ */
+function getProductsFromArray($itemsIds){
+
+    // Объединяет элементы массива в строку, 2 параметр розділювач
+    $strIds = implode(', ', $itemsIds);
+
+    // in - це в діапазоні. такий запис коректний ({$strIds})
+    $sql = "SELECT * FROM products WHERE id in ({$strIds})";
+
+    $rs = mysql_query($sql);
+
+    return creatSmartyRsArray($rs);
+}
