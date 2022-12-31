@@ -77,7 +77,7 @@ function addToCart(itemId){
  */
 function getData(obj_form){
         // ініціалізація об'єкта, тому що нам потрібні дані в форматі ключ = значення
-          var hData = {};
+          var hData = [];
 
           // для всіх полів цього об'єкта застосовуємо метод .each
           $('input, textarea, select',  obj_form).each(function(){

@@ -29,14 +29,15 @@ function registerAction(){
 
     // перевірка обов'язкових даних
 
-    // змінна в яку будемо сладувати результати
+    // змінна в яку будемо складувати результати
     $resData = null;
     $resData = checkRegisterParams($email, $pwd1, $pwd2);
 
-    // після функції вище  перевіряємо якщо є $resData перевіряємо далі checkUserEmail
+    // після функції вище  перевіряємо якщо немає $resData(а в нас вони є) перевіряємо далі checkUserEmail,
+    // якщо такої пошти в базі немає створюємо далі пароль
     if (!$resData && checkUserEmail($email)){
         $resData['success'] = false;
-        $resData['message'] = "Користувачз таким email '$email' уже зареєстрованний";
+        $resData['message'] = "Користувач з таким email '$email' уже зареєстрованний";
     }
 
     if(!$resData){
@@ -50,12 +51,16 @@ function registerAction(){
             $resData['message'] = "Користувач успішно зареєструвався";
             $resData['success'] = 1;
 
+            // спрощення запису інакше довеось б писати $userData[0]['name']
             $userData = $userData[0];
+            // коли при реєстрації вводиться ім'я = імені, або пошті, також ці дані можливо виводити в боковому меню
             $resData['userName'] = $userData['name'] ? $userData['name'] : $userData['email'];
+            // якщо введені лише пошта то присвоюємодані пошти
             $resData['userEmail'] = $email;
 
+            // а сесія для того щоб мати дані про користувача
             $_SESSION['user'] = $userData;
-            $_SESSION['user']['displayName'] = $userData['name'] ? $userData['name'] :  $userData['email'];
+            $_SESSION['user']['displayName'] = $resData['userName'] ;
         }else{
             $resData['success'] = 0;
             $resData['message'] = "Помилка реєстрації";

@@ -42,7 +42,7 @@ function loadTemplate($smarty, $templateName){
 function d($value = null, $die = 1){
     echo 'Debug: <br /><pre>';
     // значення змынної
-    print_r($value);
+    var_dump($value);
     echo '</pre>';
 
     if($die) die;

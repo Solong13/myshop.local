@@ -35,7 +35,6 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress){
         $sql = "SELECT * FROM users WHERE 
             (`email` = '$email' and `pwd` = '$pwdMD5') LIMIT 1";
 
-
         $rs = mysql_query($sql);
         $rs = creatSmartyRsArray($rs);
 
@@ -48,6 +47,7 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress){
     }else{
         $rs['success'] = 0;
     }
+
     return $rs;
 }
 
